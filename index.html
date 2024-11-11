@@ -9,23 +9,45 @@
         body {
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
-            font-size: 1.05rem;
         }
+
         .form-container {
             background-color: #ffffff;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .form-title {
             color: #343a40;
         }
+
+        .form-label {
+            font-weight: normal;
+
+            font-size: 1.12rem; /* Increase label font size */
+        }
+        .form-control {
+            width: 500px; /* or any other value you prefer */
+        }
+
         .btn-custom {
             width: 120px; /* Increase button width */
             font-weight: normal;
             font-size: 1.1rem; /* Increase button font size */
             margin: 5px;
             border-radius: 10px;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #5750d7;
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom:active {
+            transform: scale(0.95); /* "Press" effect on click */
         }
     </style>
 </head>
@@ -41,27 +63,35 @@
                 <form id="fieldForm">
                     <div class="mb-3">
                         <label for="fieldCode" class="form-label">Field Code</label>
-                        <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
+                        <div class="input-group" style="width: 400px">
+                            <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
+                            <button class="btn btn-outline-secondary" type="button" id="fieldCodeBtn">Search</button>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="fieldName" class="form-label">Field Name</label>
-                        <input type="text" class="form-control" id="fieldName" name="fieldName" placeholder="Enter field name" required>
+                        <input type="text" class="form-control" id="fieldName" name="fieldName"
+                               placeholder="Enter field name" required>
                     </div>
                     <div class="mb-3">
                         <label for="fieldSize" class="form-label">Field Size (m²)</label>
-                        <input type="number" class="form-control" id="fieldSize" name="fieldSize" placeholder="e.g., 1500" required>
+                        <input type="number" class="form-control" id="fieldSize" name="fieldSize"
+                               placeholder="e.g., 1500" required>
                     </div>
                     <div class="mb-3">
                         <label for="fieldLocation" class="form-label">Field Location</label>
-                        <input type="text" class="form-control" id="fieldLocation" name="fieldLocation" placeholder="e.g., (x, y)">
+                        <input type="text" class="form-control" id="fieldLocation" name="fieldLocation"
+                               placeholder="e.g., (x, y)">
                     </div>
                     <div class="mb-3">
                         <label for="fieldImage1" class="form-label">Upload Image 1</label>
-                        <input type="file" class="form-control" id="fieldImage1" name="fieldImage1" placeholder="Paste image " accept="image/png, image/jpeg" >
+                        <input type="file" class="form-control" id="fieldImage1" name="fieldImage1"
+                               placeholder="Paste image " accept="image/png, image/jpeg">
                     </div>
                     <div class="mb-3">
                         <label for="fieldImage2" class="form-label">Field Image 2 URL</label>
-                        <input type="file" class="form-control" id="fieldImage2" name="fieldImage2" placeholder="Paste image" accept="image/png, image/jpeg" >
+                        <input type="file" class="form-control" id="fieldImage2" name="fieldImage2"
+                               placeholder="Paste image" accept="image/png, image/jpeg">
                     </div>
                 </form>
             </div>
@@ -78,15 +108,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                               placeholder="Enter first name">
                     </div>
                     <div class="mb-3">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+                        <input type="text" class="form-control" id="lastName" name="lastName"
+                               placeholder="Enter last name">
                     </div>
                     <div class="mb-3">
                         <label for="designation" class="form-label">Designation</label>
-                        <input type="text" class="form-control" id="designation" name="designation" placeholder="e.g., Manager">
+                        <input type="text" class="form-control" id="designation" name="designation"
+                               placeholder="e.g., Manager">
                     </div>
                     <div class="mb-3">
                         <label for="gender" class="form-label">Gender</label>
@@ -105,11 +138,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="contact" placeholder="Dehiwala,Colombo">
+                        <input type="text" class="form-control" id="address" name="contact"
+                               placeholder="Dehiwala,Colombo">
                     </div>
                     <div class="mb-3">
                         <label for="contact" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contact" name="contact" placeholder="e.g., +123456789">
+                        <input type="text" class="form-control" id="contact" name="contact"
+                               placeholder="e.g., +123456789">
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
