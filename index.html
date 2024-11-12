@@ -49,9 +49,122 @@
         .btn-custom:active {
             transform: scale(0.95); /* "Press" effect on click */
         }
+        /* Navbar Styles */
+        .navbar {
+            background-color: #343a40; /* Dark background */
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover {
+            color: #d4d4d4;
+        }
+
+        /* Nav Links */
+        .nav-link {
+            color: #d4d4d4 !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        /* Search Bar */
+        .form-control {
+            border-radius: 20px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-outline-primary {
+            border-color: #ced4da;
+            color: #ffffff;
+            background-color: #495057;
+            border-radius: 20px;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #6c757d;
+            color: #ffffff;
+        }
+
+        /* User Dropdown */
+        .dropdown-menu {
+            background-color: #495057;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .dropdown-item {
+            color: #d4d4d4;
+        }
+
+        .dropdown-item:hover {
+            color: #ffffff;
+            background-color: #343a40;
+        }
+
+        .user-profile img {
+            border: 2px solid #ffffff;
+        }
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="#">MyApp</a>
+
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links and Search -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left-Aligned Links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Centered Search Bar -->
+            <form class="d-flex mx-lg-auto mb-2 mb-lg-0">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+
+            <!-- Right-Aligned User Icon and Dropdown -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown user-profile">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://via.placeholder.com/30" alt="User" class="rounded-circle me-2"> Username
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h2 class="mb-4 text-center text-primary">Field and Staff Management</h2>
 
@@ -106,12 +219,12 @@
                 <h4 class="form-title mb-3">Staff Information</h4>
                 <form id="staffForm">
                     <div class="row d-flex justify-content-between align-items-center mb-3">
-                        <label for="fieldCode" class="form-label">Field Code</label>
+                        <label for="SearchStaff" class="form-label">Field Code</label>
                         <div class="input-group" style="width: 200px">
-                            <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
+                            <input type="text" class="form-control" id="SearchStaff" name="fieldCode" placeholder="e.g., FLD-001" required>
                         </div>
                         <div class="input-group" style="width: 300px;margin-right: 100px">
-                            <input type="text" class="form-control" placeholder="Search fields" aria-label="Search fields">
+                            <input type="text" class="form-control" placeholder="Search Staff Member" aria-label="Search fields">
                             <button class="btn btn-primary" type="button">Search</button>
                         </div>
                     </div>
