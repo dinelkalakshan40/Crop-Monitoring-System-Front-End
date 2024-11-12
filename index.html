@@ -61,11 +61,14 @@
             <div class="form-container">
                 <h4 class="form-title mb-3">Field Management</h4>
                 <form id="fieldForm">
-                    <div class="mb-3">
+                    <div class="row d-flex justify-content-between align-items-center mb-3">
                         <label for="fieldCode" class="form-label">Field Code</label>
-                        <div class="input-group" style="width: 400px">
+                        <div class="input-group" style="width: 200px">
                             <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
-                            <button class="btn btn-outline-secondary" type="button" id="fieldCodeBtn">Search</button>
+                        </div>
+                        <div class="input-group" style="width: 300px;margin-right: 100px">
+                            <input type="text" class="form-control" placeholder="Search fields" aria-label="Search fields">
+                            <button class="btn btn-primary" type="button">Search</button>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -102,9 +105,15 @@
             <div class="form-container">
                 <h4 class="form-title mb-3">Staff Information</h4>
                 <form id="staffForm">
-                    <div class="mb-3">
-                        <label for="staffId" class="form-label">Staff ID</label>
-                        <input type="text" class="form-control" id="staffId" name="staffId" placeholder="e.g., ST-001">
+                    <div class="row d-flex justify-content-between align-items-center mb-3">
+                        <label for="fieldCode" class="form-label">Field Code</label>
+                        <div class="input-group" style="width: 200px">
+                            <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
+                        </div>
+                        <div class="input-group" style="width: 300px;margin-right: 100px">
+                            <input type="text" class="form-control" placeholder="Search fields" aria-label="Search fields">
+                            <button class="btn btn-primary" type="button">Search</button>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">First Name</label>
