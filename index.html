@@ -4,307 +4,1199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
         body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
+            font-family: 'Outfit', sans-serif;
+            background-color: #B0C4DE;
         }
 
-        .form-container {
-            background-color: #ffffff;
+        /* Navigation Bar */
+
+        .navbar :hover > .nav-link {
+            color: white;
+        }
+
+        /* Custom Form */
+
+        .custom-form > .row {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .custom-button {
+            margin: 30px;
+        }
+
+        /* Login Page */
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .form-title {
-            color: #343a40;
+        .login-image {
+            background: url('assets/images/logo.png') no-repeat center center;
+            background-size: cover;
         }
 
-        .form-label {
-            font-weight: normal;
-
-            font-size: 1.12rem; /* Increase label font size */
-        }
-        .form-control {
-            width: 500px; /* or any other value you prefer */
-        }
-
-        .btn-custom {
-            width: 120px; /* Increase button width */
-            font-weight: normal;
-            font-size: 1.1rem; /* Increase button font size */
-            margin: 5px;
-            border-radius: 10px;
-            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-custom:hover {
-            background-color: #5750d7;
-            transform: scale(1.05); /* Slightly enlarge on hover */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-custom:active {
-            transform: scale(0.95); /* "Press" effect on click */
-        }
-        /*nav style*/
-        /* Navbar Height and Padding */
-        .navbar {
-            background-color: #343a40;
-            padding: 1rem 1rem; /* Increased padding for height */
-        }
-
-        .navbar-brand {
-            font-size: 1.8rem; /* Larger brand font size */
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .navbar-brand:hover {
-            color: #d4d4d4;
-        }
-
-        /* Nav Links */
-        .nav-link {
-            font-size: 1.1rem; /* Increased font size for links */
-            padding: 0.5rem 1rem; /* Spacing for taller look */
-            color: #d4d4d4 !important;
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: #ffffff !important;
-        }
-
-        /* Search Bar */
-        .form-control {
-            border-radius: 20px;
-            border: 1px solid #ced4da;
-            height: 37px; /* Taller input field */
-            width: 200px;
-        }
-
-        .btn-outline-primary {
-            border-color: #ced4da;
-            color: #ffffff;
-            background-color: #495057;
-            border-radius: 20px;
-            font-size: 1.05rem; /* Slightly larger button text */
-
-        }
-
-        .btn-outline-primary:hover {
-            background-color: #6c757d;
-            color: #ffffff;
-        }
-
-        /* User Dropdown */
-        .dropdown-menu {
-            background-color: #495057;
+        .card {
             border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            padding: 40px 30px;
+            background-color: #FBFBDB;
+        }
+
+        .login-image {
+            background-color: #8DA206;
+        }
+
+        button > a {
+            text-decoration: none;
+            color: white;
+        }
+
+        p > a {
+            text-decoration: none;
+        }
+
+        /* Register Form */
+
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .register-image {
+            background: url('assets/images/logo.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-form {
+            padding: 40px 30px;
+            background-color: #FBFBDB;
+        }
+
+        .register-image {
+            background-color: #8DA206;
+
+        }
+
+        button > a {
+            text-decoration: none;
+            color: white;
+        }
+
+        p > a {
+            text-decoration: none;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .form-control, .btn {
             border-radius: 10px;
         }
-
-        .dropdown-item {
-            color: #d4d4d4;
+        input.form-control {
+            background-color: #f9f9f9; /* Light gray background */
+            color: #333; /* Text color */
+            border: 1px solid #6d85a3; /* Soft border color */
+            border-radius: 8px; /* Rounded corners */
+            font-size: 16px; /* Readable font size */
+            transition: all 0.3s ease-in-out; /* Smooth transition for hover/focus */
         }
 
-        .dropdown-item:hover {
-            color: #ffffff;
-            background-color: #343a40;
-        }
 
-        .user-profile img {
-            border: 2px solid #ffffff;
+        .custom-table {
+            border-radius: 10px; /* Rounded corners */
+            overflow: visible; /* Ensure corners are visible */
+            background-color: #B0C4DE; /* Light background for the table */
+
+            /* Row hover effect */
+
+            .table-hover tbody tr:hover {
+                background-color: #646c78; /* Light gray hover effect */
+                cursor: pointer; /* Change cursor for better interactivity */
+            }
+
+            .table th,
+            .table td {
+                vertical-align: middle; /* Align content to the middle */
+                text-align: center; /* Center-align text */
+                padding: 15px; /* Increase padding for better readability */
+            }
+
+            /* Responsive images */
+
+            .img-thumbnail {
+                border-radius: 5px; /* Slightly rounded images */
+            }
+
+            /* Style for table headers */
+
+            .table thead th {
+                font-weight: bold; /* Make the text bold */
+                text-transform: uppercase; /* Optional: Make text uppercase */
+            }
+
+            .table {
+                border-radius: 10px; /* Round the table corners */
+            }
         }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <!-- Brand Logo -->
-        <a class="navbar-brand" href="#">MyApp</a>
-
-        <!-- Toggle Button for Mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navbar Links and Search -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Left-Aligned Links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Field-And-Staff</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">StaffAndVehicle</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-
-            <!-- Centered Search Bar -->
-            <form class="d-flex mx-lg-auto mb-2 mb-lg-0">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-
-            <!-- Right-Aligned User Icon and Dropdown -->
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown user-profile">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://via.placeholder.com/30" alt="User" class="rounded-circle me-2"> Username
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container mt-5">
-    <h2 class="mb-4 text-center text-primary">Field and Staff Management</h2>
-
-    <div class="row">
-        <!-- Field Management Form -->
-        <div class="col-md-6 mb-4">
-            <div class="form-container">
-                <h4 class="form-title mb-3">Field Management</h4>
-                <form id="fieldForm">
-                    <div class="row d-flex justify-content-between align-items-center mb-3">
-                        <label for="fieldCode" class="form-label">Field Code</label>
-                        <div class="input-group" style="width: 200px">
-                            <input type="text" class="form-control" id="fieldCode" name="fieldCode" placeholder="e.g., FLD-001" required>
-                        </div>
-                        <div class="input-group" style="width: 300px;margin-right: 100px">
-                            <input type="text" class="form-control" placeholder="Search fields" aria-label="Search fields">
-                            <button class="btn btn-primary" type="button">Search</button>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fieldName" class="form-label">Field Name</label>
-                        <input type="text" class="form-control" id="fieldName" name="fieldName"
-                               placeholder="Enter field name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fieldSize" class="form-label">Field Size (m²)</label>
-                        <input type="number" class="form-control" id="fieldSize" name="fieldSize"
-                               placeholder="e.g., 1500" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fieldLocation" class="form-label">Field Location</label>
-                        <input type="text" class="form-control" id="fieldLocation" name="fieldLocation"
-                               placeholder="e.g., (x, y)">
-                    </div>
-                    <div class="mb-3">
-                        <label for="fieldImage1" class="form-label">Upload Image 1</label>
-                        <input type="file" class="form-control" id="fieldImage1" name="fieldImage1"
-                               placeholder="Paste image " accept="image/png, image/jpeg">
-                    </div>
-                    <div class="mb-3">
-                        <label for="fieldImage2" class="form-label">Field Image 2 URL</label>
-                        <input type="file" class="form-control" id="fieldImage2" name="fieldImage2"
-                               placeholder="Paste image" accept="image/png, image/jpeg">
-                    </div>
-                </form>
+<div id="navigation">
+    <nav class="navbar navbar-expand-lg" style="background-color:#1560bd;height: 80px;font-size: 1.2rem">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logo.png" alt="Green Shadow" width="50px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="dashboard-btn" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="field-btn" class="nav-link">Field</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="crop-btn" class="nav-link">Crop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="staff-btn" class="nav-link">Staff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="vehicle-btn" class="nav-link">Vehicle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="equipment-btn" class="nav-link">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="log-btn" class="nav-link">Log</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="user-btn" class="nav-link">User</a>
+                    </li>
+                </ul>
+                <div class="d-flex" role="search">
+                    <a id="logout-btn" class="btn btn-outline-light">Logout</a>
+                </div>
             </div>
         </div>
+    </nav>
+</div>
+<div id="login_page">
+    <div class="container login-container">
+        <div class="card shadow-lg w-100" style="max-width: 900px;">
+            <div class="row g-0">
+                <!-- Left Side - Image -->
+                <div class="col-md-6 login-image d-none d-md-block"></div>
 
-        <!-- Staff Information Form -->
-        <div class="col-md-6 mb-4">
-            <div class="form-container">
-                <h4 class="form-title mb-3">Staff Information</h4>
-                <form id="staffForm">
-                    <div class="row d-flex justify-content-between align-items-center mb-3">
-                        <label for="SearchStaff" class="form-label">Field Code</label>
-                        <div class="input-group" style="width: 200px">
-                            <input type="text" class="form-control" id="SearchStaff" name="fieldCode" placeholder="e.g., FLD-001" required>
-                        </div>
-                        <div class="input-group" style="width: 300px;margin-right: 100px">
-                            <input type="text" class="form-control" placeholder="Search Staff Member" aria-label="Search fields">
-                            <button class="btn btn-primary" type="button">Search</button>
-                        </div>
+                <!-- Right Side - Login Form -->
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="login-form w-100">
+                        <h2 class="text-center mb-4">Sign In</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                       placeholder="Enter your password">
+                            </div>
+                            <div class="d-grid mb-3">
+                                <span id="login-submit-btn" class="btn btn-primary">Login</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="mb-0">Don't have an Account? <a id="signup-link">Sign up</a></p>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName"
-                               placeholder="Enter first name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName"
-                               placeholder="Enter last name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="designation" class="form-label">Designation</label>
-                        <input type="text" class="form-control" id="designation" name="designation"
-                               placeholder="e.g., Manager">
-                    </div>
-                    <div class="mb-3">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select class="form-select" id="gender" name="gender">
-                            <option value="MALE">Male</option>
-                            <option value="FEMALE">Female</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="dob" name="dob">
-                    </div>
-                    <div class="mb-3">
-                        <label for="joinedDate" class="form-label">Joined Date</label>
-                        <input type="date" class="form-control" id="joinedDate" name="joinedDate">
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="contact"
-                               placeholder="Dehiwala,Colombo">
-                    </div>
-                    <div class="mb-3">
-                        <label for="contact" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contact" name="contact"
-                               placeholder="e.g., +123456789">
-                    </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-select" id="role" name="role">
-                            <option value="MANAGER">Manager</option>
-                            <option value="WORKER">Worker</option>
-                            <option value="ASSISTANT">Assistant</option>
-                            <option value="TECHNICIAN">Technician</option>
-                        </select>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div id="register_page">
+    <div class="container register-container">
+        <div class="card shadow-lg w-100" style="max-width: 900px;">
+            <div class="row g-0">
+                <!-- Left Side - Image -->
+                <div class="col-md-6 register-image d-none d-md-block"></div>
 
-    <!-- CRUD Buttons -->
-    <div class="text-center mt-4">
-        <button type="button" class="btn btn-primary btn-custom">Add</button>
-        <button type="button" class="btn btn-success btn-custom">Update</button>
-        <button type="button" class="btn btn-danger btn-custom">Delete</button>
-        <button type="reset" class="btn btn-secondary btn-custom">Reset</button>
+                <!-- Right Side - register Form -->
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="register-form w-100">
+                        <h2 class="text-center mb-4">Sign up</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your Ful Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                       placeholder="Enter your password">
+                            </div>
+                            <div class="d-grid mb-3">
+                                <span id="register-submit-btn" type="submit" class="btn btn-primary">Register</span>
+                            </div>
+                            <div class="text-center">
+                                <p class="mb-0">Already have an account? <a id="signin-link">Sign in</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<div id="dashboard_page">
+</div>
+<div id="field_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Code</label>
+                <input type="text" class="textt form-control" placeholder="Ex: F0001" aria-label="First name">
+            </div>
+            <div class="col">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Ex: Nebula" aria-label="Last name">
+            </div>
+            <div class="col">
+                <label class="form-label">Location</label>
+                <input type="text" class="form-control" placeholder="Ex: 38.8951° latitude, -77.0364° longitude "
+                       aria-label="First name">
+            </div>
+            <div class="col-3">
+                <label class="form-label">Extent size</label>
+                <input type="text" class="form-control" placeholder="Extent of the field (Preferred Sq. m) "
+                       aria-label="Last name">
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col">
+                <label class="form-label">Crops</label>
+                <input type="text" class="form-control" placeholder="Available crop types of a field "
+                       aria-label="First name">
+            </div>
+            <div class="col">
+                <label class="form-label">Staff</label>
+                <input type="text" class="form-control" placeholder="Allocated staff to the field   "
+                       aria-label="Last name">
+            </div>
+            <div class="col">
+                <label class="form-label">Image 1</label>
+                <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+            <div class="col">
+                <label class="form-label">Image 2</label>
+                <input type="file" class="form-control" id="inputGroupFile02">
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="table-primary text-center">
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Extent Size</th>
+                    <th scope="col">Crops</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Image 1</th>
+                    <th scope="col">Image 2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>10,000 sqm</td>
+                    <td>Wheat, Corn</td>
+                    <td>John, Sarah</td>
+                    <td>
+                        <img src="assets/images/image1.jpg" alt="Image 1" class="img-thumbnail" width="50">
+                    </td>
+                    <td>
+                        <img src="assets/images/image2.jpg" alt="Image 2" class="img-thumbnail" width="50">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>5,000 sqm</td>
+                    <td>Rice</td>
+                    <td>Emma</td>
+                    <td>
+                        <img src="assets/images/image1.jpg" alt="Image 1" class="img-thumbnail" width="50">
+                    </td>
+                    <td>
+                        <img src="assets/images/image2.jpg" alt="Image 2" class="img-thumbnail" width="50">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="crop_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Code</label>
+                <input type="text" class="textt form-control" placeholder="Ex: C0001" aria-label="Code">
+            </div>
+            <div class="col">
+                <label class="form-label">Common name</label>
+                <input type="text" class="form-control" placeholder="Ex: Corn" aria-label="Common name">
+            </div>
+            <div class="col">
+                <label class="form-label">Scientific name</label>
+                <input type="text" class="form-control" placeholder="Ex: Zea mays" aria-label="Scientific name">
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" id="Image">
+            </div>
+            <div class="col">
+                <label class="form-label">Category</label>
+                <input type="text" class="form-control" placeholder="Ex: Cereal" aria-label="Category">
+            </div>
+            <div class="col">
+                <label class="form-label">Season</label>
+                <input type="text" class="form-control" placeholder="Ex: Spring" aria-label="Season">
+            </div>
+            <div class="col">
+                <label class="form-label">Field</label>
+                <input type="text" class="form-control" placeholder="Ex: F0001 " aria-label="Field">
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Common name</th>
+                    <th scope="col">Scientific name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Season</th>
+                    <th scope="col">Field</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="staff_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Code</label>
+                <input type="text" class="form-control" placeholder="Ex: S0001" aria-label="Code">
+            </div>
+            <div class="col">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" placeholder="Ex: Tony" aria-label="First Name">
+            </div>
+            <div class="col">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" placeholder="Ex: Stark" aria-label="Last name">
+            </div>
+            <div class="col">
+                <label class="form-label">Designation</label>
+                <input type="text" class="form-control" placeholder="Ex: CEO" aria-label="Designation">
+            </div>
+            <div class="col">
+                <label class="form-label">Gender</label>
+                <select class="form-control" id="genderSelect" name="gender">
+                    <option value="" disabled selected>Choose Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
 
-    <!-- Display List -->
-    <h3 class="mt-5 text-center text-secondary">Field and Staff List</h3>
-    <ul id="fieldList" class="list-group mx-auto" style="max-width: 600px;"></ul>
+        </div>
+        <div class=" row">
+            <div class="col-3">
+                <label class="form-label">Joined date</label>
+                <input type="date" class="form-control" placeholder="Joined date of the member"
+                       aria-label="Joined date">
+            </div>
+            <div class="col-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" placeholder="Designation of the member"
+                       aria-label="Date of Birth">
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col">
+                <label class="form-label">Building no or name </label>
+                <input type="text" class="form-control" placeholder="Ex: 28/D or Jayabima building"
+                       aria-label="Building no or name ">
+            </div>
+            <div class="col">
+                <label class="form-label">Street or lane</label>
+                <input type="text" class="form-control" placeholder="Ex: Rathnapura Road" aria-label="Street or lane">
+            </div>
+            <div class="col">
+                <label class="form-label">Main city</label>
+                <input type="text" class="form-control" placeholder="Ex: Diurumpitiya" aria-label="Main city">
+            </div>
+            <div class="col">
+                <label class="form-label">Main state</label>
+                <input type="text" class="form-control" placeholder="Ex: Getahaththa" aria-label="Main state">
+            </div>
+            <div class="col-2">
+                <label class="form-label">Postal code</label>
+                <input type="text" class="form-control" placeholder="Ex: 70620" aria-label="Postal code">
+            </div>
+        </div>
+        <div class=" row">
+            <div class="col">
+                <label class="form-label">Contact No.</label>
+                <input type="text" class="form-control" placeholder="Ex: 0777XXXXXX" aria-label="Contact No.">
+            </div>
+            <div class="col">
+                <label class="form-label">Email Address</label>
+                <input type="text" class="form-control" placeholder="Ex: tony@stark.com" aria-label="Email Address">
+            </div>
+            <div class="col">
+                <label class="form-label">Role</label>
+                <input type="text" class="form-control" placeholder="Ex: CEO" aria-label="Role">
+            </div>
+            <div class="col">
+                <label class="form-label">Field</label>
+                <input type="text" class="form-control" placeholder="Ex: F0001" aria-label="Field">
+            </div>
+            <div class="col-2">
+                <label class="form-label">Vehicle</label>
+                <input type="text" class="form-control" placeholder="Ex: CBR-5000" aria-label="Vehicle">
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Joined date</th>
+                    <th scope="col">Date of Birth</th>
+                    <th scope="col">Building no or name</th>
+                    <th scope="col">Street or lane</th>
+                    <th scope="col">Main city</th>
+                    <th scope="col">Main state</th>
+                    <th scope="col">Postal code</th>
+                    <th scope="col">Contact No.</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Field</th>
+                    <th scope="col">Vehicle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>John</td>
+                    <td>Manager</td>
+                    <td>Male</td>
+                    <td>2020-01-15</td>
+                    <td>1985-05-20</td>
+                    <td>Building A</td>
+                    <td>Main Street</td>
+                    <td>Cityville</td>
+                    <td>Stateville</td>
+                    <td>12345</td>
+                    <td>0777123456</td>
+                    <td>john.doe@example.com</td>
+                    <td>Manager</td>
+                    <td>F0001</td>
+                    <td>Car</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Jane</td>
+                    <td>Developer</td>
+                    <td>Female</td>
+                    <td>2019-03-10</td>
+                    <td>1990-07-15</td>
+                    <td>Building B</td>
+                    <td>Second Street</td>
+                    <td>Townsville</td>
+                    <td>Regionville</td>
+                    <td>67890</td>
+                    <td>0777987654</td>
+                    <td>jane.doe@example.com</td>
+                    <td>Developer</td>
+                    <td>F0002</td>
+                    <td>Bike</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="log_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Log code</label>
+                <input type="text" class="form-control" placeholder="Ex: L0001" aria-label="Log code">
+            </div>
+            <div class="col">
+                <label class="form-label">Log Date</label>
+                <input type="text" class="form-control" id="log-date" readonly aria-label="Log Date">
+            </div>
+            <div class="col">
+                <label class="form-label">Log Observation</label>
+                <input type="text" class="form-control" placeholder="Ex: httk kawa" id="log-observe"
+                       aria-label="Log Observation">
+            </div>
+            <div class="col">
+                <label class="form-label">Observered Image</label>
+                <input type="file" class="form-control" id="ObserveredImage">
+            </div>
+            <div class="col">
+                <label class="form-label">Field</label>
+                <select class="form-control" aria-label="Field">
+                    <option value="" disabled selected>Select relevant field</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Staff</label>
+                <select class="form-control" aria-label="Staff">
+                    <option value="" disabled selected>Select staff member</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Crop</label>
+                <select class="form-control" aria-label="Crop">
+                    <option value="" disabled selected>Select crop member</option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Equipment Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Fuel Type</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Field</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>E001</td>
+                    <td>Tractor</td>
+                    <td>Mechanical</td>
+                    <td>Diesel</td>
+                    <td>Available</td>
+                    <td>Operational</td>
+                    <td>John Doe</td>
+                    <td>Agriculture</td>
+                </tr>
+                <tr>
+                    <td>E002</td>
+                    <td>Plough</td>
+                    <td>Mechanical</td>
+                    <td>None</td>
+                    <td>Unavailable</td>
+                    <td>Under Maintenance</td>
+                    <td>Jane Smith</td>
+                    <td>Agriculture</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="equipment_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Equipment code</label>
+                <input type="text" class="form-control" placeholder="Ex: V0001" aria-label="Equipment code">
+            </div>
+            <div class="col">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Ex: LY-5495" aria-label="Name">
+            </div>
+            <div class="col">
+                <label class="form-label">Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="electrical" value="Electrical"
+                           aria-label="Electrical">
+                    <label class="form-check-label" for="electrical">
+                        Electrical
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="mechanical" value="Mechanical"
+                           aria-label="Mechanical">
+                    <label class="form-check-label" for="mechanical">
+                        Mechanical
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label">Availability</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="available" value="Available"
+                           aria-label="Available">
+                    <label class="form-check-label" for="available">
+                        Available
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="unavailable"
+                           value="Unavailable" aria-label="Unavailable">
+                    <label class="form-check-label" for="unavailable">
+                        Unavailable
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="UnderMaintenance"
+                           value="Under Maintenance" aria-label="Under Maintenance">
+                    <label class="form-check-label" for="unavailable">
+                        Under Maintenance
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label">Staff</label>
+                <select class="form-control" aria-label="Fuel type">
+                    <option value="" disabled selected>Select staff member</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Field</label>
+                <select class="form-control" aria-label="Fuel type">
+                    <option value="" disabled selected>Select relevant field</option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Equipment Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Fuel Type</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Field</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>E001</td>
+                    <td>Tractor</td>
+                    <td>Mechanical</td>
+                    <td>Diesel</td>
+                    <td>Available</td>
+                    <td>Operational</td>
+                    <td>John Doe</td>
+                    <td>Agriculture</td>
+                </tr>
+                <tr>
+                    <td>E002</td>
+                    <td>Plough</td>
+                    <td>Mechanical</td>
+                    <td>None</td>
+                    <td>Unavailable</td>
+                    <td>Under Maintenance</td>
+                    <td>Jane Smith</td>
+                    <td>Agriculture</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="vehicle_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Vehicle code</label>
+                <input type="text" class="form-control" placeholder="Ex: V0001" aria-label="Vehicle code">
+            </div>
+            <div class="col">
+                <label class="form-label">License plate number </label>
+                <input type="text" class="form-control" placeholder="Ex: LY-5495" aria-label="License plate number ">
+            </div>
+            <div class="col">
+                <label class="form-label">Vehicle category </label>
+                <input type="text" class="form-control" placeholder="Ex: Lorry" aria-label="Vehicle category ">
+            </div>
+            <div class="col">
+                <label class="form-label">Fuel type </label>
+                <select class="form-control" aria-label="Fuel type">
+                    <option value="" disabled selected>Select fuel type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Status</label>
+                <input type="text" class="form-control" placeholder="Need to change" aria-label="Status">
+            </div>
+            <div class="col">
+                <label class="form-label">Allocated staff</label>
+                <input type="text" class="form-control" placeholder="Ex: XXX"
+                       aria-label="Allocated staff member details">
+            </div>
+            <div class="col">
+                <label class="form-label">Remarks</label>
+                <input type="text" class="form-control" placeholder="Ex: Kawada bn" aria-label="Remarks">
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Vehicle ID</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">License Plate</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Allocated Staff</th>
+                    <th scope="col">Remarks</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <!-- Example row data -->
+                    <td>V0001</td>
+                    <td>Scania R</td>
+                    <td>Truck</td>
+                    <td>LY-5495</td>
+                    <td>Available</td>
+                    <td>John Doe</td>
+                    <td>None</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="user_page">
+    <div class="custom-form">
+        <div class=" row">
+            <div class="col-2">
+                <label class="form-label">Equipment code</label>
+                <input type="text" class="form-control" placeholder="Ex: V0001" aria-label="Equipment code">
+            </div>
+            <div class="col">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Ex: LY-5495" aria-label="Name">
+            </div>
+            <div class="col">
+                <label class="form-label">Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="electrical" value="Electrical"
+                           aria-label="Electrical">
+                    <label class="form-check-label" for="electrical">
+                        Electrical
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="mechanical" value="Mechanical"
+                           aria-label="Mechanical">
+                    <label class="form-check-label" for="mechanical">
+                        Mechanical
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label">Availability</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="available" value="Available"
+                           aria-label="Available">
+                    <label class="form-check-label" for="available">
+                        Available
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="unavailable"
+                           value="Unavailable" aria-label="Unavailable">
+                    <label class="form-check-label" for="unavailable">
+                        Unavailable
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="availability" id="UnderMaintenance"
+                           value="Under Maintenance" aria-label="Under Maintenance">
+                    <label class="form-check-label" for="unavailable">
+                        Under Maintenance
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <label class="form-label">Staff</label>
+                <select class="form-control" aria-label="Fuel type">
+                    <option value="" disabled selected>Select staff member</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Field</label>
+                <select class="form-control" aria-label="Fuel type">
+                    <option value="" disabled selected>Select relevant field</option>
+                </select>
+            </div>
+        </div>
+        <div class="custom-button">
+            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-success">Add</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning">Update</button>
+            <button type="button" class="btn btn-info">Clear</button>
+        </div>
+        <div class="custom-table table-responsive p-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Equipment Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Fuel Type</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">Field</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>E001</td>
+                    <td>Tractor</td>
+                    <td>Mechanical</td>
+                    <td>Diesel</td>
+                    <td>Available</td>
+                    <td>Operational</td>
+                    <td>John Doe</td>
+                    <td>Agriculture</td>
+                </tr>
+                <tr>
+                    <td>E002</td>
+                    <td>Plough</td>
+                    <td>Mechanical</td>
+                    <td>None</td>
+                    <td>Unavailable</td>
+                    <td>Under Maintenance</td>
+                    <td>Jane Smith</td>
+                    <td>Agriculture</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="lib/jquery-3.7.1.min.js"></script>
+<script>
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const dd = String(today.getDate()).padStart(2, '0');
+    document.getElementById('log-date').value = `${yyyy}-${mm}-${dd}`;
+</script>
+<script>
+    $("#navigation").css({display: "none"});
+    $("#login_page").css({display: "block"});
+    $("#register_page").css({display: "none"});
+    $("#dashboard_page").css({display: "none"});
+    $("#staff_page").css({display: "none"});
+    $("#field_page").css({display: "none"});
+    $("#crop_page").css({display: "none"});
+    $("#vehicle_page").css({display: "none"});
+    $("#equipment_page").css({display: "none"});
+    $("#log_page").css({display: "none"});
+    $("#user_page").css({display: "none"});
+
+
+    $('#login-submit-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "block"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#signup-link').on('click', () => {
+        $("#navigation").css({display: "none"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "block"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#signin-link').on('click', () => {
+        $("#navigation").css({display: "none"});
+        $("#login_page").css({display: "block"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#dashboard-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "block"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#field-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "block"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#crop-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "block"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#staff-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "block"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#vehicle-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "block"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#equipment-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "block"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#log-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "block"});
+        $("#user_page").css({display: "none"});
+    });
+
+    $('#user-btn').on('click', () => {
+        $("#navigation").css({display: "block"});
+        $("#login_page").css({display: "none"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "block"});
+    });
+
+    $('#logout-btn').on('click', () => {
+        $("#navigation").css({display: "none"});
+        $("#login_page").css({display: "block"});
+        $("#register_page").css({display: "none"});
+        $("#dashboard_page").css({display: "none"});
+        $("#staff_page").css({display: "none"});
+        $("#field_page").css({display: "none"});
+        $("#crop_page").css({display: "none"});
+        $("#vehicle_page").css({display: "none"});
+        $("#equipment_page").css({display: "none"});
+        $("#log_page").css({display: "none"});
+        $("#user_page").css({display: "none"});
+    });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 </html>
