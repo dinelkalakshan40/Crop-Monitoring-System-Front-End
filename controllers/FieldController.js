@@ -1,6 +1,7 @@
 $(document).ready(function () {
     loadStaffDropdown();
     loadMonitorLogsDropdown();
+    loadAllFieldData();
 
 
     function loadStaffDropdown() {
@@ -123,6 +124,43 @@ $(document).ready(function () {
     function validateFieldCode(fieldCode) {
         const regex = /^FLD-00\d+$/; // Regex pattern for FLD-xxxx
         return regex.test(fieldCode); // Test the input against the regex
+    }
+    function loadAllFieldData() {
+        $.ajax({
+            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (response) {
+                const tableBody = $('#fieldTable tbody');
+                tableBody.empty(); // Clear existing rows
+                console.log(response);
+
+                // Loop through the response and add rows to the table
+                response.forEach(function (field) {
+                    const staffList = Array.isArray(field.staffIds) && field.staffIds.length > 0
+                        ? field.staffIds.join(', ')
+                        : 'N/A';
+                    console.log(staffList)
+                    const row = `
+                        <tr>
+                            <td>${field.fieldCode}</td>
+                            <td>${field.fieldName}</td>
+                            <td>${field.fieldLocation}</td>
+                            <td>${field.fieldSize}</td>
+                            <td>${field.logCode || 'N/A'}</td>
+                            <td>${staffList}</td>
+                            <td>${field.fieldImage1 || 'N/A'}</td>
+                            <td>${field.fieldImage2 || 'N/A'}</td>
+                        </tr>
+                    `;
+                    tableBody.append(row);
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching field data:', error);
+                alert('Failed to load field');
+            }
+        });
     }
 
 });
