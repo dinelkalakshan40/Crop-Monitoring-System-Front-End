@@ -298,7 +298,8 @@
         <div class=" row">
             <div class="col-2">
                 <label class="form-label">Code</label>
-                <input type="text" class="textt form-control" id="fieldCode" placeholder="Ex: F0001" aria-label="First name">
+                <input type="text" class="form-control" id="fieldCode" aria-label="Field Code">
+                <small id="fieldCodeFeedback" class="text-danger" style="display: none;">Invalid ID format! Use format FLD-00.</small>
             </div>
             <div class="col">
                 <label class="form-label">Name</label>
@@ -318,8 +319,9 @@
         <div class=" row">
             <div class="col">
                 <label class="form-label">MonitorLog</label>
-                <input type="text" class="form-control" id="logCode" placeholder="Available crop types of a field "
-                       aria-label="First name">
+                <select id="monitorLogDropdown" class="form-select" aria-label="Monitor Log Selection">
+                    <option value="" selected disabled>Select a Monitor-Log</option>
+                </select>
             </div>
             <div class="col">
                 <label class="form-label">Staff Member1</label>
