@@ -155,6 +155,18 @@ $(document).ready(function () {
                     `;
                     tableBody.append(row);
                 });
+                $('#fieldTable tbody tr').on('click', function () {
+                    const cells = $(this).find('td'); // Get all cells in the clicked row
+
+                    // Populate input fields
+                    $('#fieldCode').val(cells.eq(0).text());
+                    $('#fieldName').val(cells.eq(1).text());
+                    $('#fieldLocation').val(cells.eq(2).text());
+                    $('#fieldSize').val(cells.eq(3).text());
+                    $('#fieldImage1').val(cells.eq(6).text() || '');  // Set the text as a value
+                    $('#fieldImage2').val(cells.eq(7).text() || '');
+
+                });
             },
             error: function (error) {
                 console.error('Error fetching field data:', error);
