@@ -122,9 +122,10 @@ $(document).ready(function () {
         }
     });
     function validateFieldCode(fieldCode) {
-        const regex = /^FLD-00\d+$/; // Regex pattern for FLD-xxxx
-        return regex.test(fieldCode); // Test the input against the regex
+        const regex = /^FLD-00\d+$/;
+        return regex.test(fieldCode);
     }
+
     function loadAllFieldData() {
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
@@ -140,7 +141,6 @@ $(document).ready(function () {
                     const staffList = Array.isArray(field.staffIds) && field.staffIds.length > 0
                         ? field.staffIds.join(', ')
                         : 'N/A';
-                    console.log(staffList)
                     const row = `
                         <tr>
                             <td>${field.fieldCode}</td>
@@ -156,14 +156,14 @@ $(document).ready(function () {
                     tableBody.append(row);
                 });
                 $('#fieldTable tbody tr').on('click', function () {
-                    const cells = $(this).find('td'); // Get all cells in the clicked row
+                    const cells = $(this).find('td');
 
                     // Populate input fields
                     $('#fieldCode').val(cells.eq(0).text());
                     $('#fieldName').val(cells.eq(1).text());
                     $('#fieldLocation').val(cells.eq(2).text());
                     $('#fieldSize').val(cells.eq(3).text());
-                    $('#fieldImage1').val(cells.eq(6).text() || '');  // Set the text as a value
+                    $('#fieldImage1').val(cells.eq(6).text() || '');
                     $('#fieldImage2').val(cells.eq(7).text() || '');
 
                 });
@@ -174,6 +174,122 @@ $(document).ready(function () {
             }
         });
     }
+    // Click event handler for the "Update" button
+
+   /* $('#updateField').on('click', function () {
+        const updatedFieldData = {
+            fieldCode: $('#fieldCode').val(),
+            fieldName: $('#fieldName').val(),
+            fieldLocation: $('#fieldLocation').val(),
+            fieldSize: parseFloat($('#fieldSize').val()),
+            fieldImage1: $('#fieldImage1').val(),
+            fieldImage2: $('#fieldImage2').val()
+        };
+
+        // Ensure the object is not empty
+        if (!updatedFieldData || Object.keys(updatedFieldData).length === 0) {
+            alert('Invalid data to send');
+            return;
+        }
+
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(updatedFieldData),
+            success: function (response) {
+                console.log('Update successful:', response);
+                alert('Field updated successfully!');
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating field:', error, xhr.responseText);
+                alert(`Failed to update field. Error: ${xhr.responseText || error}`);
+            }
+        });
+    });*/
+
+    $('#updateField').on('click', function () {
+
+        const fieldCode = $('#fieldCode').val();
+        const fieldName = $('#fieldName').val();
+        const fieldLocation = $('#fieldLocation').val();
+        const fieldSize = parseFloat($('#fieldSize').val()); //
+
+        const fieldImage1 = $('#fieldImage1').val();
+        const fieldImage2 = $('#fieldImage2').val();
+
+        // Create an object to hold the data
+        const updatedFieldData = {
+            fieldCode: fieldCode,
+            fieldName: fieldName,
+            fieldLocation: fieldLocation,
+            fieldSize: fieldSize,
+            fieldImage1:fieldImage1,
+            fieldImage2:fieldImage2
+        };
+        console.log(updatedFieldData);
+
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(updatedFieldData),
+            success: function (response) {
+                alert('Field updated successfully!');
+                console.log(response);
+
+                loadAllFieldData();
+            },
+            error: function (error) {
+                console.error('Error updating field data:', error);
+                alert('Failed to update field data');
+            }
+        });
+    });
+    /*$('#updateField').on('click', function () {
+        const fieldCode = $('#fieldCode').val();
+        const fieldName = $('#fieldName').val();
+        const fieldLocation = $('#fieldLocation').val();
+        const fieldSize = $('#fieldSize').val();
+        const logCode = $('#monitorLogDropdown').val();
+
+        const staffIds = [];
+        $('#staffDropdown1, #staffDropdown2').each(function () {
+            const selectedStaffId = $(this).val();
+            if (selectedStaffId) staffIds.push({ staffId: selectedStaffId });
+        });
+
+        const fieldImage1 = $('#fieldImage1').val();
+        const fieldImage2 = $('#fieldImage2').val();
+
+        // Prepare the data to send to the backend
+        const updatedFieldData = {
+            fieldCode,
+            fieldName,
+            fieldLocation,
+            fieldSize,
+            logCode,
+            staff: staffIds, // Sending array of staff objects
+            fieldImage1,
+            fieldImage2
+        };
+        console.log("updated Field :"+updatedFieldData)
+
+        // Send the update request to the backend
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(updatedFieldData),
+            success: function (response) {
+                alert('Field updated successfully!');
+            },
+            error: function (error) {
+                alert('Failed to update field');
+            }
+        });
+    });*/
+
 
 });
 
