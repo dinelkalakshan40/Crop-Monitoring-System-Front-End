@@ -234,6 +234,35 @@ $(document).ready(function () {
             }
         });
     });
+    $('#SearchField').on('click', function () {
+        const fieldCode = $('#fieldCode').val();
+
+
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/details/${fieldCode}`, // API endpoint
+            type: 'GET',
+            success: function (fieldDetails) {
+                // Handle success response
+                console.log('Field details retrieved:', fieldDetails);
+
+                // Display field details in the UI (adjust the logic as per your UI)
+                $('#fieldName').val(fieldDetails.fieldName || '');
+                $('#fieldLocation').val(fieldDetails.fieldLocation || '');
+                $('#fieldSize').val(fieldDetails.fieldSize || '');
+                $('#fieldImage1').val(fieldDetails.fieldImage1 || '');
+                $('#fieldImage2').val(fieldDetails.fieldImage2 || '');
+
+                alert('Field details retrieved successfully!');
+            },
+            error: function (error) {
+                // Handle errors
+                console.error('Error retrieving field details:', error);
+                alert("error retriev data")
+
+            }
+        });
+    });
+
 
 
 });
