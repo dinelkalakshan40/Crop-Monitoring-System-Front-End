@@ -176,37 +176,6 @@ $(document).ready(function () {
     }
     // Click event handler for the "Update" button
 
-   /* $('#updateField').on('click', function () {
-        const updatedFieldData = {
-            fieldCode: $('#fieldCode').val(),
-            fieldName: $('#fieldName').val(),
-            fieldLocation: $('#fieldLocation').val(),
-            fieldSize: parseFloat($('#fieldSize').val()),
-            fieldImage1: $('#fieldImage1').val(),
-            fieldImage2: $('#fieldImage2').val()
-        };
-
-        // Ensure the object is not empty
-        if (!updatedFieldData || Object.keys(updatedFieldData).length === 0) {
-            alert('Invalid data to send');
-            return;
-        }
-
-        $.ajax({
-            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(updatedFieldData),
-            success: function (response) {
-                console.log('Update successful:', response);
-                alert('Field updated successfully!');
-            },
-            error: function (xhr, status, error) {
-                console.error('Error updating field:', error, xhr.responseText);
-                alert(`Failed to update field. Error: ${xhr.responseText || error}`);
-            }
-        });
-    });*/
 
     $('#updateField').on('click', function () {
 
@@ -246,49 +215,25 @@ $(document).ready(function () {
             }
         });
     });
-    /*$('#updateField').on('click', function () {
+    $('#deleteField').on('click', function () {
         const fieldCode = $('#fieldCode').val();
-        const fieldName = $('#fieldName').val();
-        const fieldLocation = $('#fieldLocation').val();
-        const fieldSize = $('#fieldSize').val();
-        const logCode = $('#monitorLogDropdown').val();
 
-        const staffIds = [];
-        $('#staffDropdown1, #staffDropdown2').each(function () {
-            const selectedStaffId = $(this).val();
-            if (selectedStaffId) staffIds.push({ staffId: selectedStaffId });
-        });
-
-        const fieldImage1 = $('#fieldImage1').val();
-        const fieldImage2 = $('#fieldImage2').val();
-
-        // Prepare the data to send to the backend
-        const updatedFieldData = {
-            fieldCode,
-            fieldName,
-            fieldLocation,
-            fieldSize,
-            logCode,
-            staff: staffIds, // Sending array of staff objects
-            fieldImage1,
-            fieldImage2
-        };
-        console.log("updated Field :"+updatedFieldData)
-
-        // Send the update request to the backend
+        // AJAX DELETE request
         $.ajax({
-            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
-            type: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(updatedFieldData),
-            success: function (response) {
-                alert('Field updated successfully!');
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`, // API endpoint
+            type: "DELETE",
+            success: function () {
+                // Handle success response
+                alert('Field and associated staff deleted successfully!');
+                console.log('Field deleted successfully');
+                loadAllFieldData();
             },
             error: function (error) {
-                alert('Failed to update field');
+                console.error('Error deleting field data:', error);
+                alert('Failed to delete field data');
             }
         });
-    });*/
+    });
 
 
 });
