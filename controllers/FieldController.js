@@ -2,6 +2,7 @@ $(document).ready(function () {
     loadStaffDropdown();
     loadMonitorLogsDropdown();
     loadAllFieldData();
+    generatedFieldCode();
 
 
     function loadStaffDropdown() {
@@ -262,8 +263,21 @@ $(document).ready(function () {
             }
         });
     });
+    function generatedFieldCode() {
+        $.ajax({
+            url: "http://localhost:8080/cropMonitoringSystem/api/v1/fields/fieldCode",  // Your API endpoint
+            type: "GET",  // HTTP method
+            success: function(response) {
+                console.log("Generated Field Code:", response);
+                // Assuming the response contains the generated field code as a string
+                $('#fieldCode').val(response);
+            },
+            error: function(error) {
+                console.error('Error fetching field code:', error);
 
-
+            }
+        });
+    }
 
 });
 
