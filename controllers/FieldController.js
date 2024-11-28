@@ -166,6 +166,10 @@ $(document).ready(function () {
                     $('#fieldSize').val(cells.eq(3).text());
                     $('#fieldImage1').val(cells.eq(6).text() || '');
                     $('#fieldImage2').val(cells.eq(7).text() || '');
+                    //disable drop down
+                    $("#monitorLogDropdown").prop("disabled", true);
+                    $("#staffDropdown1").prop("disabled", true);
+                    $("#staffDropdown2").prop("disabled", true);
 
                 });
             },
@@ -278,6 +282,18 @@ $(document).ready(function () {
             }
         });
     }
+    $("#clearField").on("click", function () {
+        $("#fieldCode").val("");
+        $("#fieldName").val("");
+        $("#fieldLocation").val("");
+        $("#fieldSize").val("");
+        $("#fieldImage1").val("");
+        $("#fieldImage2").val("");
+
+        $("#monitorLogDropdown").prop("disabled", false);
+        $("#staffDropdown1").prop("disabled", false);
+        $("#staffDropdown2").prop("disabled", false);
+    });
 
 });
 
