@@ -29,7 +29,6 @@ $(document).ready(function () {
             },
             error: function (error) {
                 console.error('Error fetching staff:', error);
-                alert('Error fetching staff data.');
             }
         });
     }
@@ -56,7 +55,7 @@ $(document).ready(function () {
             },
             error: function (error) {
                 console.error('Error fetching monitor logs:', error);
-                alert('Failed to load monitor logs.');
+
             }
         });
     }
@@ -72,11 +71,6 @@ $(document).ready(function () {
 
         if (staff1) selectedStaff.push({staffId: staff1});
         if (staff2) selectedStaff.push({staffId: staff2});
-
-        if (!$('#fieldCode').val()) {
-            alert("Field Code is required.");
-            return;
-        }
 
         // into a JavaScript object
         var fieldDTO = {
@@ -98,11 +92,15 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify(fieldDTO),
             success: function (response) {
-                alert(response.message || "Field saved successfully!");
+                alert("Field saved successfully!");
                 console.log("Success response:", response);
+                generatedFieldCode();
+                clearAllField();
+                loadAllFieldData();
             },
             error: (res) => {
                 console.error(JSON.stringify(res));
+                alert("Field Data Not saved")
             },
         });
     });
@@ -135,7 +133,7 @@ $(document).ready(function () {
             success: function (response) {
                 const tableBody = $('#fieldTable tbody');
                 tableBody.empty(); // Clear existing rows
-                console.log(response);
+                console.log("loadAllFieldData :"+ response);
 
                 // Loop through the response and add rows to the table
                 response.forEach(function (field) {
@@ -175,7 +173,6 @@ $(document).ready(function () {
             },
             error: function (error) {
                 console.error('Error fetching field data:', error);
-                alert('Failed to load field');
             }
         });
     }
@@ -211,8 +208,12 @@ $(document).ready(function () {
             success: function (response) {
                 alert('Field updated successfully!');
                 console.log(response);
-
+                clearAllField();
+                generatedFieldCode();
                 loadAllFieldData();
+                $('#monitorLogDropdown').prop('disabled', false);
+                $('#staffDropdown1').prop('disabled', false);
+                $('#staffDropdown2').prop('disabled', false);
             },
             error: function (error) {
                 console.error('Error updating field data:', error);
@@ -229,9 +230,14 @@ $(document).ready(function () {
             type: "DELETE",
             success: function () {
                 // Handle success response
-                alert('Field and associated staff deleted successfully!');
+                alert('Field data deleted successfully!');
                 console.log('Field deleted successfully');
                 loadAllFieldData();
+                generatedFieldCode();
+                clearAllField();
+                $('#monitorLogDropdown').prop('disabled', false);
+                $('#staffDropdown1').prop('disabled', false);
+                $('#staffDropdown2').prop('disabled', false);
             },
             error: function (error) {
                 console.error('Error deleting field data:', error);
@@ -239,25 +245,25 @@ $(document).ready(function () {
             }
         });
     });
-    $('#SearchField').on('click', function () {
-        const fieldCode = $('#fieldCode').val();
+    $('#searchButton').on('click', function () {
+        const fieldCode = $('#searchInput').val();
 
 
         $.ajax({
-            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/details/${fieldCode}`, // API endpoint
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/details/${fieldCode}`,
             type: 'GET',
             success: function (fieldDetails) {
                 // Handle success response
-                console.log('Field details retrieved:', fieldDetails);
+                console.log('Search Field data retrieved:', fieldDetails);
 
-                // Display field details in the UI (adjust the logic as per your UI)
+
                 $('#fieldName').val(fieldDetails.fieldName || '');
                 $('#fieldLocation').val(fieldDetails.fieldLocation || '');
                 $('#fieldSize').val(fieldDetails.fieldSize || '');
                 $('#fieldImage1').val(fieldDetails.fieldImage1 || '');
                 $('#fieldImage2').val(fieldDetails.fieldImage2 || '');
 
-                alert('Field details retrieved successfully!');
+                alert('Field data retrieved');
             },
             error: function (error) {
                 // Handle errors
@@ -283,17 +289,38 @@ $(document).ready(function () {
         });
     }
     $("#clearField").on("click", function () {
-        $("#fieldCode").val("");
-        $("#fieldName").val("");
-        $("#fieldLocation").val("");
-        $("#fieldSize").val("");
-        $("#fieldImage1").val("");
-        $("#fieldImage2").val("");
+        generatedFieldCode();
+        $("#searchInput").val('');
+        $('#fieldName').val('');
+        $('#fieldLocation').val('');
+        $('#fieldSize').val('');
+        $('#fieldImage1').val('');
+        $('#fieldImage2').val('');
 
-        $("#monitorLogDropdown").prop("disabled", false);
-        $("#staffDropdown1").prop("disabled", false);
-        $("#staffDropdown2").prop("disabled", false);
+        // Reset dropdowns to the default option
+        $('#monitorLogDropdown').prop('selectedIndex', 0);
+        $('#staffDropdown1').prop('selectedIndex', 0);
+        $('#staffDropdown2').prop('selectedIndex', 0);
+        // Enable dropdowns
+        $('#monitorLogDropdown').prop('disabled', false);
+        $('#staffDropdown1').prop('disabled', false);
+        $('#staffDropdown2').prop('disabled', false);
     });
+    function clearAllField(){
+        generatedFieldCode();
+        $('#fieldCode').val('');
+        $('#fieldName').val('');
+        $('#fieldLocation').val('');
+        $('#fieldSize').val('');
+        $('#fieldImage1').val('');
+        $('#fieldImage2').val('');
+
+        // Reset dropdowns to the default option
+        $('#monitorLogDropdown').prop('selectedIndex', 0);
+        $('#staffDropdown1').prop('selectedIndex', 0);
+        $('#staffDropdown2').prop('selectedIndex', 0);
+
+    }
 
 });
 
