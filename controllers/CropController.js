@@ -1,76 +1,62 @@
 $(document).ready(function () {
 
-    loadStaffDropdown();
-    loadMonitorLogsDropdown()
+    loadFieldDropdown();
+    loadMonitorLogsDropdown();
 
-    $('#saveCropButton').on('click', function () {
+    $('#AddCrop').on('click', function () {
+
+        const cropCode = $('#CropCode').val();
+        const cropName = $('#CropName').val();
+        const cropImage = $('#cropImage')[0].files[0];
+        const cropCategory = $('#CropCategory').val();
+        const cropSeason = $('#cropSeason').val();
+        const selectedField = $('#fieldCropDropdown').val();
+        const selectedMonitorLog = $('#monitorLogCropDropdown').val();
 
         const formData = new FormData();
-        formData.append("cropCode", $('#cropCode').val());
-        formData.append("cropName", $('#cropName').val());
-        formData.append("cropImage", $('#cropImage')[0].files[0]); // Getting the selected file
-        formData.append("category", $('#category').val());
-        formData.append("cropSeason", $('#cropSeason').val());
-        formData.append("fieldCode", $('#fieldCode').val());
-        formData.append("logCode", $('#logCode').val() || ""); // Optional field
-
-
+        formData.append('cropCode', cropCode);
+        formData.append('cropName', cropName);
+        formData.append('cropImage', cropImage);
+        formData.append('category', cropCategory);
+        formData.append('cropSeason', cropSeason);
+        formData.append('fieldCode', selectedField);
+        formData.append('logCode', selectedMonitorLog);
+        console.log("Crop form Data :" +formData)
         $.ajax({
-            url: '/your-endpoint',
+            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function (response) {
-                // Handle success response
-                showSuccessMessage(response);
+                alert("Success saved Crop data: " + response);
             },
             error: function (xhr, status, error) {
-
                 const errorMessage = xhr.responseText || "An error occurred while saving the crop.";
-                showErrorMessage(errorMessage);
+                alert("Error: " + errorMessage);
             }
         });
     });
 
-    // Custom success message function
-    function showSuccessMessage(message) {
-        $('#alertContainer').html(`
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `);
-    }
-
-    // Custom error message function
-    function showErrorMessage(message) {
-        $('#alertContainer').html(`
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `);
-    }
-    function loadStaffDropdown() {
+    function loadFieldDropdown() {
         $.ajax({
-            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/staff',
+            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
             type: 'GET',
             contentType: 'application/json',
             success: function (response) {
-                console.log('Staff data:', response);
+                console.log('Field data:', response);
 
-                $('#staffCropDropdown').empty();
+                $('#fieldCropDropdown').empty();
 
 
                 // Add default option
-                $('#staffCropDropdown').append('<option value="" selected disabled>Select Staff 1</option>');
+                $('#fieldCropDropdown').append('<option value="" selected disabled>Select Field</option>');
 
 
 
-                response.forEach(function (staff) {
-                    var staffOption = `<option value="${staff.staffId}">${staff.staffId} - ${staff.firstName} ${staff.lastName}</option>`;
-                    $('#staffCropDropdown').append(staffOption);
+                response.forEach(function (field) {
+                    var fieldOption = `<option value="${field.fieldCode}">${field.fieldCode}</option>`;
+                    $('#fieldCropDropdown').append(fieldOption);
 
                 });
             },
