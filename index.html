@@ -239,12 +239,12 @@
                         <h2 class="text-center mb-4">Sign In</h2>
                         <form>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                <label for="loginEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password"
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPassword"
                                        placeholder="Enter your password">
                             </div>
                             <div class="d-grid mb-3">
@@ -273,18 +273,28 @@
                         <h2 class="text-center mb-4">Sign up</h2>
                         <form>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your Ful Name">
+                                <label for="userName" class="form-label">UserName</label>
+                                <input type="text" class="form-control" id="userName" placeholder="Enter userName">
                             </div>
                             <div class="mb-3">
-                                <label for="signUpEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="signUpPassword" class="form-control" id="signUpPassword"
+                                <input type="text" class="form-control" id="password"
                                        placeholder="Enter your password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="role" class="form-label">Select your Role</label>
+                                <label for="role" class="form-label">Select your Role</label>
+                                <select class="form-control" id="role">
+                                    <option value="" disabled selected>Select your Role</option>
+                                    <option value="MANAGER">Manager</option>
+                                    <option value="ADMINISTRATIVE">Administrative</option>
+                                    <option value="SCIENTIST">Scientist</option>
+                                </select>
                             </div>
                             <div class="d-grid mb-3">
                                 <span id="register-submit-btn" type="submit" class="btn btn-primary">Register</span>
@@ -642,7 +652,7 @@
             </div>
             <div class="col">
                 <label class="form-label">Log Observation</label>
-                <input type="text" class="form-control" placeholder="Ex: httk kawa" id="log-observe"
+                <input type="text" class="form-control"  id="log-observe"
                        aria-label="Log Observation">
             </div>
             <div class="col">
@@ -1209,6 +1219,7 @@
 </script>
 <script src="controllers/FieldController.js"></script>
 <script src="controllers/CropController.js"></script>
+<script src="controllers/UserController.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

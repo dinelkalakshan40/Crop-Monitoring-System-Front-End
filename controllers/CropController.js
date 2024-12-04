@@ -147,6 +147,7 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'json',
             success: function (data) {
+                console.log('Crop data received:', data);
                 const tableBody = $('#cropTable tbody');
                 tableBody.empty(); // Clear any existing rows
 
@@ -186,8 +187,8 @@ $(document).ready(function () {
                     tableBody.append(noDataRow);
                 }
             },
-            error: function (xhr, status, error) {
-                alert("Error: Unable to load crop data.");
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('Crop  data received failed:', textStatus, errorThrown); // Log the error details
             }
         });
     }
