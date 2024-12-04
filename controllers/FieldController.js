@@ -6,10 +6,14 @@ $(document).ready(function () {
 
 
     function loadStaffDropdown() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/staff',
             type: 'GET',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (response) {
                 console.log('Staff data:', response);
 
@@ -34,10 +38,14 @@ $(document).ready(function () {
     }
 
     function loadMonitorLogsDropdown() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/monitors',
             type: 'GET',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (response) {
                 console.log('Monitor Logs data:', response);
 
@@ -126,10 +134,14 @@ $(document).ready(function () {
     }
 
     function loadAllFieldData() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
             type: 'GET',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (response) {
                 const tableBody = $('#fieldTable tbody');
                 tableBody.empty(); // Clear existing rows
@@ -248,10 +260,13 @@ $(document).ready(function () {
     $('#searchButton').on('click', function () {
         const fieldCode = $('#searchInput').val();
 
-
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/details/${fieldCode}`,
             type: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (fieldDetails) {
                 // Handle success response
                 console.log('Search Field data retrieved:', fieldDetails);
@@ -274,9 +289,13 @@ $(document).ready(function () {
         });
     });
     function generatedFieldCode() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: "http://localhost:8080/cropMonitoringSystem/api/v1/fields/fieldCode",  // Your API endpoint
             type: "GET",  // HTTP method
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function(response) {
                 console.log("Generated Field Code:", response);
                 // Assuming the response contains the generated field code as a string

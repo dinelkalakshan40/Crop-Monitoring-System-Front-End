@@ -50,21 +50,7 @@ $(document).ready(function () {
         });
     });
 
-    function loadDashboardPage() {
-        $('#register-submit-btn').on('click', () => {
-            $("#navigation").css({display: "none"});
-            $("#login_page").css({display: "block"});
-            $("#register_page").css({display: "none"});
-            $("#dashboard_page").css({display: "none"});
-            $("#staff_page").css({display: "none"});
-            $("#field_page").css({display: "none"});
-            $("#crop_page").css({display: "none"});
-            $("#vehicle_page").css({display: "none"});
-            $("#equipment_page").css({display: "none"});
-            $("#log_page").css({display: "none"});
-            $("#user_page").css({display: "none"});
-        });
-    }
+
 
     $("#login-submit-btn").click(function () {
 
@@ -107,16 +93,16 @@ $(document).ready(function () {
                     $("#user_page").css({display: "none"});
                     alert("Login success");
 
-
                 } else {
-                    // If no token is returned, display an error message
+                    $("#login_page").css({ display: "block" });
                     alert("Login failed: " + response.message);
                 }
             },
             error: function (xhr, status, error) {
-                // Handle errors from the AJAX request
                 console.error("Error during login:", error);
+                $("#login_page").css({ display: "block" });
                 alert("Login failed. Please try again.");
+
             }
         });
     });

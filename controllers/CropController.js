@@ -23,7 +23,7 @@ $(document).ready(function () {
         formData.append('fieldCode', selectedField);
         formData.append('logCode', selectedMonitorLog);
         console.log("Crop form Data :" +formData)
-        $.ajax({
+       /* $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops',
             type: 'POST',
             data: formData,
@@ -46,23 +46,61 @@ $(document).ready(function () {
                 const errorMessage = xhr.responseText || "An error occurred while saving the crop.";
                 alert("Error: " + errorMessage);
             }
+        });*/
+        $.ajax({
+            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops', // Backend endpoint
+            type: 'POST',
+            data: formData,
+            processData: false, // Prevent jQuery from processing the data
+            contentType: false, // Let the browser set the content type
+            beforeSend: function (xhr) {
+                // Include Authorization header if required
+                const authToken = localStorage.getItem('authToken');
+                if (authToken) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + authToken);
+                }
+            },
+            success: function (response) {
+                alert("Successfully saved Crop data: " + response);
+
+                $('#CropCode').val('');
+                $('#CropName').val('');
+                $('#cropImage').val('');
+                $('#CropCategory').val('');
+                $('#cropSeason').val('');
+
+                loadCropData();
+            },
+            error: function (xhr, status, error) {
+                const errorMessage = xhr.responseText || "An error occurred while saving the crop.";
+                alert("Error: " + errorMessage);
+
+                // Log detailed error information to the console
+                console.error("Error Details:", {
+                    status: status,
+                    error: error,
+                    response: xhr.responseText,
+                });
+            },
         });
     });
 
     function loadFieldDropdown() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
             type: 'GET',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (response) {
                 console.log('Field data:', response);
 
                 $('#fieldCropDropdown').empty();
 
-
                 // Add default option
                 $('#fieldCropDropdown').append('<option value="" selected disabled>Select Field</option>');
-
 
 
                 response.forEach(function (field) {
@@ -77,10 +115,14 @@ $(document).ready(function () {
         });
     }
     function loadMonitorLogsDropdown() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/monitors',
             type: 'GET',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (response) {
                 console.log('Monitor Logs data:', response);
 
@@ -142,10 +184,14 @@ $(document).ready(function () {
         });
     }*/
     function loadCropData() {
+        const token = localStorage.getItem('authToken');
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops',
             type: 'GET',
             dataType: 'json',
+            headers: {
+                'Authorization': 'Bearer ' + token // Include the token in the Authorization header
+            },
             success: function (data) {
                 console.log('Crop data received:', data);
                 const tableBody = $('#cropTable tbody');
