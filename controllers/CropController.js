@@ -23,12 +23,15 @@ $(document).ready(function () {
         formData.append('fieldCode', selectedField);
         formData.append('logCode', selectedMonitorLog);
         console.log("Crop form Data :" +formData)
-       /* $.ajax({
+        $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
             success: function (response) {
                 alert("Success saved Crop data: " + response);
                 $('#CropCode').val('');
@@ -46,43 +49,8 @@ $(document).ready(function () {
                 const errorMessage = xhr.responseText || "An error occurred while saving the crop.";
                 alert("Error: " + errorMessage);
             }
-        });*/
-        $.ajax({
-            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/crops', // Backend endpoint
-            type: 'POST',
-            data: formData,
-            processData: false, // Prevent jQuery from processing the data
-            contentType: false, // Let the browser set the content type
-            beforeSend: function (xhr) {
-                // Include Authorization header if required
-                const authToken = localStorage.getItem('authToken');
-                if (authToken) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + authToken);
-                }
-            },
-            success: function (response) {
-                alert("Successfully saved Crop data: " + response);
-
-                $('#CropCode').val('');
-                $('#CropName').val('');
-                $('#cropImage').val('');
-                $('#CropCategory').val('');
-                $('#cropSeason').val('');
-
-                loadCropData();
-            },
-            error: function (xhr, status, error) {
-                const errorMessage = xhr.responseText || "An error occurred while saving the crop.";
-                alert("Error: " + errorMessage);
-
-                // Log detailed error information to the console
-                console.error("Error Details:", {
-                    status: status,
-                    error: error,
-                    response: xhr.responseText,
-                });
-            },
         });
+
     });
 
     function loadFieldDropdown() {
@@ -245,6 +213,9 @@ $(document).ready(function () {
         $.ajax({
             url: `http://localhost:8080/cropMonitoringSystem/api/v1/crops/${cropCode}`,
             type: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
             success: function (response) {
                 alert(response);
 

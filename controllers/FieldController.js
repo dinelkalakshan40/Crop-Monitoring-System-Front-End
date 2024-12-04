@@ -98,6 +98,9 @@ $(document).ready(function () {
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/fields',
             type: 'POST',
             contentType: 'application/json',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
             data: JSON.stringify(fieldDTO),
             success: function (response) {
                 alert("Field saved successfully!");
@@ -216,6 +219,9 @@ $(document).ready(function () {
             url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`,
             type: "PUT",
             contentType: "application/json",
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
             data: JSON.stringify(updatedFieldData),
             success: function (response) {
                 alert('Field updated successfully!');
@@ -240,6 +246,9 @@ $(document).ready(function () {
         $.ajax({
             url: `http://localhost:8080/cropMonitoringSystem/api/v1/fields/${fieldCode}`, // API endpoint
             type: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
             success: function () {
                 // Handle success response
                 alert('Field data deleted successfully!');
