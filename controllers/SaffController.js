@@ -117,6 +117,36 @@ $(document).ready(function () {
             }
         });
     }
+    $('#deleteStaff').on('click', function() {
+        // Assuming you have the staffId stored in a hidden input or variable
+        var staffId = $('#staffId').val();  // Get staff ID from an input field or other element
+
+        if (staffId) {
+            if (confirm('Are you sure you want to delete this staff member?')) {
+                deleteStaff(staffId);  // Call deleteStaff function with the staffId
+            }
+        } else {
+            alert('Please select a staff member to delete.');
+        }
+    });
+    function deleteStaff(staffId) {
+        $.ajax({
+            url: 'http://localhost:8080/cropMonitoringSystem/api/v1/staff/' + staffId,
+            type: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Include the token for authorization
+            },
+            success: function(response) {
+                alert(response);  // Alert the user on successful deletion
+                console.log('Staff deleted successfully:', response);
+                loadStaffTable();  // Refresh the table to reflect the changes
+            },
+            error: function(error) {
+                console.error('Error deleting staff:', error);
+                alert('Failed to delete staff.');
+            }
+        });
+    }
 
 });
 
