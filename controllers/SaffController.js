@@ -41,6 +41,7 @@ $(document).ready(function () {
                 $('#contact').val('');
                 $('#roleSelect').val('');
                 $('#Address').val('');
+                loadStaffTable();
             },
             error: function (error) {
                 console.error('Error saving staff:', error);
@@ -137,9 +138,10 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Include the token for authorization
             },
             success: function(response) {
-                alert(response);  // Alert the user on successful deletion
+                alert(response);
                 console.log('Staff deleted successfully:', response);
-                loadStaffTable();  // Refresh the table to reflect the changes
+                loadStaffTable();
+                clearAllFields();
             },
             error: function(error) {
                 console.error('Error deleting staff:', error);
@@ -184,6 +186,7 @@ $(document).ready(function () {
                 alert(response);
                 console.log('Staff updated successfully:', response);
                 loadStaffTable();
+                clearAllFields();
             },
             error: function(xhr, status, error) {
                 console.error('X    HR:', xhr);
@@ -234,5 +237,9 @@ $(document).ready(function () {
             }
         });
     });
+    function clearAllFields() {
+        $('#searchStaffInput, #staffId, #firstName, #lastName, #designation, #joinedDate, #dob, #contact, #Address').val('');
+        $('#genderSelect, #roleSelect').prop('selectedIndex', 0);
+    }
 });
 
