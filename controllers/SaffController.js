@@ -197,5 +197,42 @@ $(document).ready(function () {
         $('#searchStaffInput, #staffId, #firstName, #lastName, #designation, #joinedDate, #dob, #contact, #Address').val('');
         $('#genderSelect, #roleSelect').prop('selectedIndex', 0);
     });
+    $('#searchStaffBtn').on('click', function () {
+        const staffId = $('#searchStaffInput').val().trim();
+
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/staff/${staffId}`,
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            },
+            contentType: 'application/json',
+            success: function (response) {
+                // Populate the fields with the fetched data
+                $('#staffId').val(response.staffId);
+                $('#firstName').val(response.firstName);
+                $('#lastName').val(response.lastName);
+                $('#designation').val(response.designation);
+                $('#genderSelect').val(response.gender);
+                $('#joinedDate').val(response.joinedDate);
+                $('#dob').val(response.dob);
+                $('#contact').val(response.contact);
+                $('#roleSelect').val(response.role);
+                $('#Address').val(response.address);
+
+                console.log('Staff details fetched successfully:', response);
+            },
+            error: function (xhr) {
+                if (xhr.status === 404) {
+                    alert("Staff member not found.");
+                } else if (xhr.status === 400) {
+                    alert("Invalid Staff ID format.");
+                } else {
+                    alert("Failed to fetch staff details. Please try again later.");
+                }
+                console.error('Error fetching staff details:', xhr);
+            }
+        });
+    });
 });
 
