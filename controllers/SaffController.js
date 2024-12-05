@@ -32,6 +32,15 @@ $(document).ready(function () {
             success: function (response) {
                 alert('Staff saved successfully!');
                 console.log('Response:', response);
+                $('#firstName').val('');
+                $('#lastName').val('');
+                $('#designation').val('');
+                $('#genderSelect').val('');
+                $('#joinedDate').val('');
+                $('#dob').val('');
+                $('#contact').val('');
+                $('#roleSelect').val('');
+                $('#Address').val('');
             },
             error: function (error) {
                 console.error('Error saving staff:', error);
@@ -39,7 +48,7 @@ $(document).ready(function () {
             }
         });
     });
-    function loadStaffTable(){
+    function loadStaffTable() {
         $.ajax({
             url: 'http://localhost:8080/cropMonitoringSystem/api/v1/staff',
             type: 'GET',
@@ -70,6 +79,35 @@ $(document).ready(function () {
                         '</tr>';
                     // Append the row to the table body
                     $('#staffTable tbody').append(row);
+                });
+
+                // Add event listener for row click
+                $('#staffTable tbody tr').on('click', function() {
+                    var selectedRow = $(this);
+
+                    // Get the data from the selected row
+                    var staffId = selectedRow.find('td').eq(0).text();
+                    var firstName = selectedRow.find('td').eq(1).text();
+                    var lastName = selectedRow.find('td').eq(2).text();
+                    var designation = selectedRow.find('td').eq(3).text();
+                    var gender = selectedRow.find('td').eq(4).text();
+                    var joinedDate = selectedRow.find('td').eq(5).text();
+                    var dob = selectedRow.find('td').eq(6).text();
+                    var contact = selectedRow.find('td').eq(7).text();
+                    var role = selectedRow.find('td').eq(8).text();
+                    var address = selectedRow.find('td').eq(9).text();
+
+                    // Set the data to the input fields
+                    $('#staffId').val(staffId);
+                    $('#firstName').val(firstName);
+                    $('#lastName').val(lastName);
+                    $('#designation').val(designation);
+                    $('#genderSelect').val(gender);  // Set gender select value
+                    $('#joinedDate').val(joinedDate);
+                    $('#dob').val(dob);
+                    $('#contact').val(contact);
+                    $('#roleSelect').val(role);  // Set role select value
+                    $('#Address').val(address);
                 });
             },
             error: function(error) {
