@@ -147,6 +147,55 @@ $(document).ready(function () {
             }
         });
     }
+    $('#updateStaff').on('click', function() {
+        var staffId = $('#staffId').val();
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var designation = $('#designation').val();
+        var gender = $('#genderSelect').val();
+        var dob = $('#dob').val();
+        var joinedDate = $('#joinedDate').val();
+        var address = $('#Address').val();
+        var contact = $('#contact').val();
+        var role = $('#roleSelect').val();
 
+        var staffData = {
+            staffId: staffId,
+            firstName: firstName,
+            lastName: lastName,
+            designation: designation,
+            gender: gender,
+            dob: dob,
+            joinedDate: joinedDate,
+            address: address,
+            contact: contact,
+            role: role
+        };
+
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/staff/${staffId}`,
+            type: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            },
+            contentType: 'application/json',
+            data: JSON.stringify(staffData),
+            success: function(response) {
+                alert(response);
+                console.log('Staff updated successfully:', response);
+                loadStaffTable();
+            },
+            error: function(xhr, status, error) {
+                console.error('X    HR:', xhr);
+                console.error('Status:', status);
+                console.error('Error:', error);
+                alert('Failed to update staff: ' + (xhr.responseText || 'Unknown error'));
+            }
+        });
+    });
+    $('#clearStaffInputs').on('click', function () {
+        $('#searchStaffInput, #staffId, #firstName, #lastName, #designation, #joinedDate, #dob, #contact, #Address').val('');
+        $('#genderSelect, #roleSelect').prop('selectedIndex', 0);
+    });
 });
 
