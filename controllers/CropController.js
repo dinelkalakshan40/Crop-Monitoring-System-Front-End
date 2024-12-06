@@ -283,5 +283,17 @@ $(document).ready(function () {
             }
         });
     });
+    $("#resetCrop").click(function () {
+        $("#CropCode").val("");
+        $("#CropName").val("");
+        $("#CropCategory").val("");
+        $("#cropSeason").val("");
+        $("#cropImage").val("");
+        $("#fieldCropDropdown").prop("selectedIndex", 0);
+        $("#monitorLogCropDropdown").prop("selectedIndex", 0);
+
+        // Clear search input if needed
+        $("#searchCropInput").val("");
+    });
 
 });
