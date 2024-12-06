@@ -150,7 +150,7 @@ $(document).ready(function () {
                 tableBody.empty(); // Clear existing rows
                 console.log("loadAllFieldData :"+ response);
 
-                // Loop through the response and add rows to the table
+
                 response.forEach(function (field) {
                     const staffList = Array.isArray(field.staffIds) && field.staffIds.length > 0
                         ? field.staffIds.join(', ')

@@ -43,6 +43,7 @@ $(document).ready(function () {
                 $('#fieldCropDropdown').prop('selectedIndex', 0);
                 $('#monitorLogCropDropdown').prop('selectedIndex', 0);
 
+                clearAllFields();
                 loadCropData();
             },
             error: function (xhr, status, error) {
@@ -206,6 +207,20 @@ $(document).ready(function () {
             }
         });
     }
+    function clearAllFields() {
+
+        $('#CropCode').val('');
+        $('#CropName').val('');
+
+        // Clear file input
+        $('#cropImage').val('');
+
+        // Reset dropdowns to their default value
+        $('#CropCategory').val('');
+        $('#cropSeason').val('');
+        $('#fieldCropDropdown').prop('selectedIndex', 0);
+        $('#monitorLogCropDropdown').prop('selectedIndex', 0);
+    }
 
     $('#deleteCrop').on('click', function () {
         const cropCode = $('#CropCode').val();
@@ -217,13 +232,54 @@ $(document).ready(function () {
                 'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
             },
             success: function (response) {
-                alert(response);
 
+                alert(response);
+                clearAllFields();
                 loadCropData();
             },
             error: function (xhr, status, error) {
                 const errorMessage = xhr.responseText || "Failed to delete crop.";
                 alert("Error: " + errorMessage);
+            }
+        });
+    });
+    $('#updateCrop').click(function () {
+        // Retrieve form data
+        const cropCode = $('#CropCode').val();
+        const cropName = $('#CropName').val();
+        const category = $('#CropCategory').val();
+        const cropSeason = $('#cropSeason').val();
+        const cropImage = $('#cropImage')[0].files[0];
+        const fieldCode  = $('#fieldCropDropdown').val();
+        const logCode  = $('#monitorLogCropDropdown').val();
+
+        // Create FormData object
+        const formData = new FormData();
+        formData.append('cropCode', cropCode);
+        formData.append('cropName', cropName);
+        formData.append('cropImage', cropImage);
+        formData.append('category', category);
+        formData.append('cropSeason', cropSeason);
+        formData.append('fieldCode', fieldCode);
+        formData.append('logCode', logCode);
+
+        // Make AJAX request
+        $.ajax({
+            url: `http://localhost:8080/cropMonitoringSystem/api/v1/crops/${cropCode}`,
+            type: 'PUT',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add the token here
+            },
+            success: function (response) {
+                alert(response);
+                loadCropData();
+                clearAllFields();
+            },
+            error: function (xhr, status, error) {
+                alert(`Error: ${xhr.responseText}`);
             }
         });
     });
